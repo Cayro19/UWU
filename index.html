@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Para mi niña linda</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="inicio" class="letras">
+    💖 Haz clic para comenzar 💖
+  </div>
+
+  <div class="contenido" style="display: none;">
+    <div class="corazon"></div>
+    <div class="letras">Contigo cada día es mejor que el anterior. 💖</div>
+    <div class="letra-cancion" id="letraCancion"></div>
+    <audio id="audio" src="besame.mp3"></audio>
+  </div>
+
+  <script>
+    const letraCancion = document.getElementById("letraCancion");
+    const audio = document.getElementById("audio");
+
+const letras = [
+  { tiempo: 16, texto: "Hola uwu" },
+  { tiempo: 21, texto: "Queria hablarte uwu" },
+  { tiempo: 26, texto: "Para recordarte lo linda que eres😍" },
+  { tiempo: 31, texto: "Y lo bien que me haces sentir" },
+
+  { tiempo: 37, texto: "Lo feliz que me haces uwu" },
+  { tiempo: 43, texto: "Asi que te dedico esta" },
+  { tiempo: 49, texto: "BESAME" },
+  { tiempo: 53, texto: "Como si el mundo se acabara despues" },
+  { tiempo: 57, texto: "BESAME" },
+
+  { tiempo: 61, texto: "Y beso a beso pon el cielo al revez" },
+  { tiempo: 66, texto: "BESAME" },
+  { tiempo: 69, texto: "Sin razon" },
+  { tiempo: 70, texto: "Por que quiere el corazon" },
+
+  { tiempo: 74, texto: "Besame🥺" },
+  { tiempo: 95, texto: "Sienteme" },
+  { tiempo: 100, texto: "En el viento" },
+  { tiempo: 103, texto: "Mientras yo" },
+  { tiempo: 107, texto: "Muero lento" },
+
+  { tiempo: 111, texto: "Besame" },
+  { tiempo: 115, texto: "Sin motivos" },
+  { tiempo: 119, texto: "Y esta vez" },
+  { tiempo: 123, texto: "Siempre contigo oh oh oh xd" },
+  { tiempo: 127, texto: "BESAMEEEEEEEEEEE" },
+
+  { tiempo: 129, texto: "Como si el mundo se acabara despues" },
+  { tiempo: 135, texto: "BESAMEEE" },
+  { tiempo: 138, texto: "Y beso a beso pon el cielo al revez" },
+  { tiempo: 143, texto: "Besame" },
+  { tiempo: 145, texto: "Sin razon" },
+  { tiempo: 147, texto: "Por que quiere el corazon🥺" },
+  { tiempo: 151, texto: "Besame🥺" },
+
+  { tiempo: 171, texto: "BESAME" },
+  { tiempo: 174, texto: "Como si el mundo se acabara despues" },
+  { tiempo: 180, texto: "BESAME" },
+  { tiempo: 183, texto: "Y beso a beso pon el cielo al revez" },
+  { tiempo: 189, texto: "BESAME" },
+  { tiempo: 190, texto: "Sin razon" },
+  { tiempo: 192, texto: "Por que quiere el corazoooooooooooon" },
+
+  { tiempo: 198, texto: "Besame" },
+  { tiempo: 204, texto: "Besame asi, sin compacion" },
+  { tiempo: 209, texto: "Quedate en mi, sin condicion" },
+  { tiempo: 214, texto: "Dame tan solo un motivo" },
+  { tiempo: 220, texto: "Y me quedo yo" },
+  { tiempo: 226, texto: "Y me quedo yoo" },
+  { tiempo: 232, texto: "Y me quedo yoooo" },
+  { tiempo: 237, texto: "Y me quedo yoooooo" },
+  { tiempo: 241, texto: "I love you🥺❤️" }
+
+];
+
+    let index = 0;
+
+    audio.ontimeupdate = () => {
+  if (index < letras.length && audio.currentTime >= letras[index].tiempo) {
+    letraCancion.innerText = letras[index].texto;
+    index++;
+  }
+
+  if (Math.floor(audio.currentTime) === 240) {
+    document.querySelector(".corazon").classList.add("corazon-grande");
+  }
+};
+
+    const inicio = document.getElementById("inicio");
+    const contenido = document.querySelector(".contenido");
+
+    inicio.addEventListener("click", () => {
+      inicio.style.display = "none";
+      contenido.style.display = "flex";
+      audio.play().catch(e => console.log("Bloqueado por el navegador:", e));
+    });
+  </script>
+</body>
+</html>
